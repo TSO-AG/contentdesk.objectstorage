@@ -1,7 +1,7 @@
+import json
 from os import getenv
 from dotenv import find_dotenv, load_dotenv
 import boto3
-import xml.etree.ElementTree as ET
 load_dotenv(find_dotenv())
 
 S3_ENDPOINT = getenv('S3_ENDPOINT')
@@ -21,14 +21,12 @@ def s3client():
     )
     return s3_client
 
-import xml.etree.ElementTree as ET
-
 def puObject(data, bucket, filename):
     s3 = s3client()
     s3.put_object(
         Bucket=bucket,
         Key=filename,
-        Body=data,
+        Body=json.dumps(data),
         ACL='public-read',
         ContentType='application/json')
     
