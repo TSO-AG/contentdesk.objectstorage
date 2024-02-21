@@ -1,5 +1,4 @@
 from extract import getAkeneoProduct
-from transform import transform
 from load import loadProduct
 import sys
 
