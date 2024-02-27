@@ -1,0 +1,23 @@
+name: Export EMAG
+
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: "Environment to deploy to"
+                required: true
+                default: "emag"
+    push:
+        branches: [ master ]
+    # pull_request:
+    #  branches: [ master ]
+    schedule:
+        # every saturday at 19:00
+        - cron: "0 19 * * 6"
+
+jobs:
+    deploy:
+        name: Deploy
+        uses: ./.github/workflows/fullExport.yml
+        with:
+            environment: emag
