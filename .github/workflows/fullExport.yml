@@ -29,7 +29,7 @@ env:
     CDN_ENDPOINT: ${{ secrets.CDN_ENDPOINT }}
 
 jobs:
-  build:
+  deploy:
     environment: ${{ inputs.environment }} 
     name: Run Full Export ${{ inputs.environment }} 
     runs-on: ubuntu-latest
