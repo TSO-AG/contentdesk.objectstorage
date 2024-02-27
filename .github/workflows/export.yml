@@ -1,13 +1,19 @@
 name: Export ALAR
 
 on:
-  push:
-    branches: [ master ]
-  # pull_request:
-  #  branches: [ master ]
-  schedule:
-    # every saturday at 19:00
-    - cron: "0 19 * * 6"
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: "Environment to deploy to"
+                required: true
+                default: "alar"
+    push:
+        branches: [ master ]
+    # pull_request:
+    #  branches: [ master ]
+    schedule:
+        # every saturday at 19:00
+        - cron: "0 19 * * 6"
 
 jobs:
     deploy:
