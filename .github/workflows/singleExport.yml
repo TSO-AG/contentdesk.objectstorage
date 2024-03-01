@@ -11,16 +11,6 @@ on:
             description: 'Product SKU'
             type: string
             required: true
-  workflow_call:
-    inputs:
-        environment:
-            description: 'Environment'
-            type: environment
-            required: true
-        productSku:
-            description: 'Product SKU'
-            type: string
-            required: true
   push:
     branches: [ master ]
   # pull_request:
