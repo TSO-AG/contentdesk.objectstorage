@@ -11,6 +11,8 @@ S3_ACCESS_KEY = getenv('S3_ACCESS_KEY')
 S3_SECRET_ACCESS_KEY = getenv('S3_SECRET_ACCESS_KEY')
 S3_EXPORT_PATH = getenv('S3_EXPORT_PATH')
 
+S3_EXPORT_PATH_PRODUCTS = S3_EXPORT_PATH+"products/"
+
 def s3client():
     session = boto3.session.Session()
     s3_client = session.client(
@@ -31,11 +33,11 @@ def puObject(data, bucket, filename):
         ContentType='application/json')
     
 def loadProduct(product):
-    puObject(product, S3_BUCKET, S3_EXPORT_PATH+product['identifier']+".json")
+    puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
 
 def load(products):
     print("Loading data to target")
     print(products)
     for product in products:
         print(product)
-        puObject(product, S3_BUCKET, S3_EXPORT_PATH+product['identifier']+".json")
+        puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
