@@ -49,10 +49,18 @@ def load(products):
         sku = product['identifier']
         productRow = []
         productRow.append(sku)
+        if 'name' in product['values']:
+            name = product['values']['name'][0]['data']
+        else :
+            name = ""
+        if 'family' in product['values']:
+            family = product['values']['family'][0]['data']
+        else :
+            family = ""
         productRow[sku] = {
             "identifier": product['identifier'],
-            "name": product['name'],
-            "family": product['family'],
+            "name": name,
+            "family": family,
             "created": product['created'],
             "updated": product['updated'],
         }
