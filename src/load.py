@@ -47,8 +47,7 @@ def load(products):
         puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
         # Add to Product Index
         sku = product['identifier']
-        productRow = []
-        productRow.append(sku)
+        productRow = {}
         if 'name' in product['values']:
             name = product['values']['name'][0]['data']
         else :
@@ -64,6 +63,6 @@ def load(products):
             "created": product['created'],
             "updated": product['updated'],
         }
-        productIndex.append(product['identifier'])
+        productIndex.append(productRow)
 
     putPorductIndex(productIndex)
