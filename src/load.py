@@ -35,9 +35,27 @@ def puObject(data, bucket, filename):
 def loadProduct(product):
     puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
 
+def putPorductIndex(products):
+    puObject(products, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+"index.json")
+
 def load(products):
     print("Loading data to target")
     print(products)
+    productIndex = []
     for product in products:
         print(product)
         puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
+        # Add to Product Index
+        sku = product['identifier']
+        productRow = []
+        productRow.append(sku)
+        productRow[sku] = {
+            "identifier": product['identifier'],
+            "name": product['name'],
+            "family": product['family'],
+            "created": product['created'],
+            "updated": product['updated'],
+        }
+        productIndex.append(product['identifier'])
+
+    putPorductIndex(productIndex)
