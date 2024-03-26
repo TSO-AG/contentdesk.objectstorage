@@ -1,3 +1,6 @@
+import sys
+sys.path.append("..")
+
 from load import clearObjectStorage
 
 def __main__():
