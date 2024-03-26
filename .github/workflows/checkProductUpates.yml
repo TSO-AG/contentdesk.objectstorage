@@ -1,4 +1,4 @@
-name: Product Updates ziggy
+name: Product Updates Ziggy
 
 on:
   workflow_dispatch:
