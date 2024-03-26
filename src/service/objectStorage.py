@@ -23,10 +23,10 @@ def s3client():
     )
     return s3_client
 
-def putObject(data, bucket, filename):
+def putObject(data, filename):
     s3 = s3client()
     s3.put_object(
-        Bucket=bucket,
+        Bucket=OBJECTSTORAGE_BUCKET,
         Key=filename,
         Body=json.dumps(data),
         ACL='public-read',
@@ -75,3 +75,9 @@ def clearObjectStorage():
         for content in response['Contents']:
             print("Deleting "+content['Key'])
             s3.delete_object(Bucket=OBJECTSTORAGE_BUCKET, Key=content['Key'])
+
+# get Object from Object Storage
+def getObject(filename):
+    s3 = s3client()
+    response = s3.get_object(Bucket=OBJECTSTORAGE_BUCKET, Key=filename)
+    return json.loads(response['Body'].read())

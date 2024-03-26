@@ -5,3 +5,4 @@ output.xml
 src/env.Github.py
 src/env
 src/env/*
+src/service/__pycache__/objectStorage.cpython-311.pyc
