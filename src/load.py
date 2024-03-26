@@ -66,3 +66,12 @@ def load(products):
         productIndex.append(productRow)
 
     putPorductIndex(productIndex)
+
+# clear Object Storage - all Objekct in export/contentdesk/products
+def clearObjectStorage():
+    s3 = s3client()
+    response = s3.list_objects_v2(Bucket=OBJECTSTORAGE_BUCKET, Prefix=OBJECTSTORAGE_EXPORT_PATH_PRODUCTS)
+    if 'Contents' in response:
+        for content in response['Contents']:
+            print("Deleting "+content['Key'])
+            s3.delete_object(Bucket=OBJECTSTORAGE_BUCKET, Key=content['Key'])
