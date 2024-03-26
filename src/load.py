@@ -4,22 +4,22 @@ from dotenv import find_dotenv, load_dotenv
 import boto3
 load_dotenv(find_dotenv())
 
-S3_ENDPOINT = getenv('S3_ENDPOINT')
-S3_BUCKET = getenv('S3_BUCKET')
-S3_REGION = getenv('S3_REGION')
-S3_ACCESS_KEY = getenv('S3_ACCESS_KEY')
-S3_SECRET_ACCESS_KEY = getenv('S3_SECRET_ACCESS_KEY')
-S3_EXPORT_PATH = getenv('S3_EXPORT_PATH')
+OBJECTSTORAGE_ENDPOINT = getenv('OBJECTSTORAGE_ENDPOINT')
+OBJECTSTORAGE_BUCKET = getenv('OBJECTSTORAGE_BUCKET')
+OBJECTSTORAGE_REGION = getenv('OBJECTSTORAGE_REGION')
+OBJECTSTORAGE_ACCESS_KEY = getenv('OBJECTSTORAGE_ACCESS_KEY')
+OBJECTSTORAGE_SECRET_ACCESS_KEY = getenv('OBJECTSTORAGE_SECRET')
+OBJECTSTORAGE_EXPORT_PATH = getenv('OBJECTSTORAGE_EXPORT_PATH')
 
-S3_EXPORT_PATH_PRODUCTS = S3_EXPORT_PATH+"products/"
+OBJECTSTORAGE_EXPORT_PATH_PRODUCTS = OBJECTSTORAGE_EXPORT_PATH+"products/"
 
 def s3client():
     session = boto3.session.Session()
     s3_client = session.client(
         service_name='s3',
-        aws_access_key_id=S3_ACCESS_KEY,
-        aws_secret_access_key=S3_SECRET_ACCESS_KEY,
-        endpoint_url='https://sos-'+S3_REGION+'.'+S3_ENDPOINT,
+        aws_access_key_id=OBJECTSTORAGE_ACCESS_KEY,
+        aws_secret_access_key=OBJECTSTORAGE_SECRET_ACCESS_KEY,
+        endpoint_url='https://sos-'+OBJECTSTORAGE_REGION+'.'+OBJECTSTORAGE_ENDPOINT,
     )
     return s3_client
 
@@ -33,10 +33,10 @@ def puObject(data, bucket, filename):
         ContentType='application/json')
     
 def loadProduct(product):
-    puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
+    puObject(product, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
 
 def putPorductIndex(products):
-    puObject(products, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+"index.json")
+    puObject(products, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+"index.json")
 
 def load(products):
     print("Loading data to target")
@@ -44,7 +44,7 @@ def load(products):
     productIndex = []
     for product in products:
         print(product)
-        puObject(product, S3_BUCKET, S3_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
+        puObject(product, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
         # Add to Product Index
         sku = product['identifier']
         productRow = {}

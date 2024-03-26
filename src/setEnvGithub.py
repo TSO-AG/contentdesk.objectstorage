@@ -77,13 +77,13 @@ def getSecrets(environment):
     env_vars['AKENEO_CLIENT_SECRET'] = getenv('AKENEO_CLIENT_SECRET')
     env_vars['AKENEO_USERNAME'] = getenv('AKENEO_USERNAME')
     env_vars['AKENEO_PASSWORD'] = getenv('AKENEO_PASSWORD')
-    env_vars['CDN_ENDPOINT'] = getenv('CDN_ENDPOINT')
-    env_vars['S3_ENDPOINT'] = getenv('S3_ENDPOINT')
-    env_vars['S3_BUCKET'] = getenv('S3_BUCKET')
-    env_vars['S3_REGION'] = getenv('S3_REGION')
-    env_vars['S3_ACCESS_KEY'] = getenv('S3_ACCESS_KEY')
-    env_vars['S3_SECRET_ACCESS_KEY'] = getenv('S3_SECRET_ACCESS_KEY')
-    env_vars['S3_EXPORT_PATH'] = getenv('S3_EXPORT_PATH')
+    env_vars['OBJECTSTORAGE_ENDPOINT'] = getenv('OBJECTSTORAGE_ENDPOINT')
+    env_vars['OBJECTSTORAGE_BUCKET'] = getenv('OBJECTSTORAGE_BUCKET')
+    env_vars['OBJECTSTORAGE_REGION'] = getenv('OBJECTSTORAGE_REGION')
+    env_vars['OBJECTSTORAGE_ACCESS_KEY'] = getenv('OBJECTSTORAGE_ACCESS_KEY')
+    env_vars['OBJECTSTORAGE_SECRET_ACCESS_KEY'] = getenv('OBJECTSTORAGE_SECRET_ACCESS_KEY')
+    env_vars['OBJECTSTORAGE_EXPORT_PATH'] = getenv('OBJECTSTORAGE_EXPORT_PATH')
+    env_vars['OBJECTSTORAGE_CDN'] = getenv('CDN_ENDPOINT')
     return env_vars
 
 def main():
