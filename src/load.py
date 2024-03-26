@@ -33,7 +33,7 @@ def puObject(data, bucket, filename):
         ContentType='application/json')
     
 def loadProduct(product):
-    puObject(product, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
+    puObject(product, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+product['identifier']+"/index.json")
 
 def putPorductIndex(products):
     puObject(products, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+"index.json")
@@ -44,7 +44,7 @@ def load(products):
     productIndex = []
     for product in products:
         print(product)
-        puObject(product, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+product['identifier']+".json")
+        puObject(product, OBJECTSTORAGE_BUCKET, OBJECTSTORAGE_EXPORT_PATH_PRODUCTS+product['identifier']+"/index.json")
         # Add to Product Index
         sku = product['identifier']
         productRow = {}
