@@ -10,11 +10,10 @@ def loadProductUpdates():
     return update_list
 
 def testUpdateProductUpdates():
-    updateList = [
-       "c0d07da1-7875-4053-b129-2820385dade7",
-       "dedf67a1-2e33-49a0-ad6c-b3bb91049167",
-       "dbb48efd-6e22-4665-9987-d1744d028ea7"
-    ]
+    updateList={}
+    updateList["c0d07da1-7875-4053-b129-2820385dade7"] = "c0d07da1-7875-4053-b129-2820385dade7"
+    updateList["dedf67a1-2e33-49a0-ad6c-b3bb91049167"] = "dedf67a1-2e33-49a0-ad6c-b3bb91049167"
+    updateList["dbb48efd-6e22-4665-9987-d1744d028ea7"] = "dbb48efd-6e22-4665-9987-d1744d028ea7"
     updateProductUpdates(updateList)
 
 def updateProductUpdates(updateList):
