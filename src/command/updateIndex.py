@@ -40,7 +40,7 @@ def updateIndex(updateList):
         print("Updating product "+identifier)
         #product = getAkeneoProduct(update)
         # get Product from Object Storage
-        product = getObject('export/contentdesk/products/'+identifier+'.json')
+        product = getObject('export/contentdesk/products/'+identifier+'/index.json')
         # get Index from Object Storage
         productIndex = getObject('export/contentdesk/products/index/index.json')
         #productIndex = {}

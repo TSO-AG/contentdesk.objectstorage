@@ -15,6 +15,8 @@ def testUpdateProductUpdates():
     updateList["c0d07da1-7875-4053-b129-2820385dade7"] = "c0d07da1-7875-4053-b129-2820385dade7"
     updateList["dedf67a1-2e33-49a0-ad6c-b3bb91049167"] = "dedf67a1-2e33-49a0-ad6c-b3bb91049167"
     updateList["dbb48efd-6e22-4665-9987-d1744d028ea7"] = "dbb48efd-6e22-4665-9987-d1744d028ea7"
+    updateList["f0855124-b995-4516-ba61-40b932c31fdf"] = "f0855124-b995-4516-ba61-40b932c31fdf"
+    updateList["ea6fa9b4-4c9a-4335-bc6c-2979ce8d5ece"] = "ea6fa9b4-4c9a-4335-bc6c-2979ce8d5ece"
     updateProductUpdates(updateList)
 
 def updateProductUpdates(updateList):
