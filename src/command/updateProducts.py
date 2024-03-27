@@ -17,7 +17,10 @@ def testUpdateProductUpdates():
     updateProductUpdates(updateList)
 
 def updateProductUpdates(updateList):
+    # Add to product updates
     putObject(updateList, 'export/contentdesk/job/products/updates/index.json')
+    # Add to index updates
+    putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
 
 def updateProducts(updateList):
     for update in updateList:
@@ -27,8 +30,8 @@ def updateProducts(updateList):
 
 def __main__():
    # Test
-   #print("TEST - ADD PRODUCT UPDATES TO OBJECT STORAGE")
-   #testUpdateProductUpdates()
+   print("TEST - ADD PRODUCT UPDATES TO OBJECT STORAGE")
+   testUpdateProductUpdates()
    print("LOADING PRODUCT UPDATES")
    updateList = loadProductUpdates()   
    print("UPDATE PRODUCT")

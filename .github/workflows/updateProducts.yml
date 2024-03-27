@@ -59,4 +59,4 @@ jobs:
         run: pip install -i https://test.pypi.org/simple/ akeneo
       - name: Run Script
         working-directory: ./src/command
-        run: python updateObjectStorage.py
+        run: python updateProducts.py
