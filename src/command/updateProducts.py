@@ -1,3 +1,4 @@
+import datetime
 import sys
 sys.path.append("..")
 
@@ -21,6 +22,10 @@ def updateProductUpdates(updateList):
     putObject(updateList, 'export/contentdesk/job/products/updates/index.json')
     # Add to index updates
     putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
+    # Add to Day History
+    # Date Today format YYYY-MM-DD
+    dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
+    putObject(updateList, 'export/contentdesk/job/day/updates/'+dateToday+'/index.json')
 
 def updateProducts(updateList):
     for update in updateList:
