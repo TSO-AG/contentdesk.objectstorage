@@ -1,4 +1,4 @@
-name: Product Updates Ziggy
+name: Index Updates Ziggy
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ env:
 jobs:
   deploy:
     environment: ziggy
-    name: Product Updates ziggy
+    name: Index Updates ziggy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
