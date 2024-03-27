@@ -80,4 +80,10 @@ def clearObjectStorage():
 def getObject(filename):
     s3 = s3client()
     response = s3.get_object(Bucket=OBJECTSTORAGE_BUCKET, Key=filename)
-    return json.loads(response['Body'].read())
+    data = json.loads(response['Body'].read())
+    return data
+
+# remove Object from Object Storage
+def removeObject(filename):
+    s3 = s3client()
+    s3.delete_object(Bucket=OBJECTSTORAGE_BUCKET, Key=filename)

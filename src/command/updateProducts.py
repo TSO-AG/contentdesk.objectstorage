@@ -30,14 +30,14 @@ def updateProducts(updateList):
 
 def __main__():
    # Test
-   print("TEST - ADD PRODUCT UPDATES TO OBJECT STORAGE")
-   testUpdateProductUpdates()
+   #print("TEST - ADD PRODUCT UPDATES TO OBJECT STORAGE")
+   #testUpdateProductUpdates()
    print("LOADING PRODUCT UPDATES")
    updateList = loadProductUpdates()   
    print("UPDATE PRODUCT")
    updateProducts(updateList)
    print("REMOVING PRODUCT UPDATES")
-   updateProductUpdates([])
+   updateProductUpdates({})
    print("DONE")
 
 if __name__== "__main__":
