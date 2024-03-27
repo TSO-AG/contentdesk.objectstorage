@@ -87,3 +87,12 @@ def getObject(filename):
 def removeObject(filename):
     s3 = s3client()
     s3.delete_object(Bucket=OBJECTSTORAGE_BUCKET, Key=filename)
+
+# count files in folder in Object Storage
+def countFilesInFolder(folder):
+    s3 = s3client()
+    response = s3.list_objects_v2(Bucket=OBJECTSTORAGE_BUCKET, Prefix=folder)
+    if 'Contents' in response:
+        return len(response['Contents'])
+    else:
+        return 0
