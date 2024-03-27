@@ -17,6 +17,7 @@ def setProductIndexSchema(product):
     index["enabled"] = product["enabled"]
     index["created"] = product["created"]
     index["updated"] = product["updated"]
+    index["name"] = product["values"]["name"][0]["data"]
     #index["values"] = {}
     #for attribute in product["values"]:
     #    index["values"][attribute] = product["values"][attribute]
