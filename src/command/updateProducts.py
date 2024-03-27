@@ -53,7 +53,7 @@ def updateProducts(updateList):
 def __main__():
    # Test
    #print("TEST - ADD PRODUCT UPDATES TO OBJECT STORAGE")
-   testUpdateProductUpdates()
+   #testUpdateProductUpdates()
    print("LOADING PRODUCT UPDATES")
    updateList = loadProductUpdates()   
    print("UPDATE PRODUCT")
