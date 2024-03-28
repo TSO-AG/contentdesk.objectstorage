@@ -28,7 +28,6 @@ def updateProductUpdates(updateList):
     updateProductHistory(updateList)
 
 def getProductUpdateHistory():
-
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
     # check if file exists
     try:
