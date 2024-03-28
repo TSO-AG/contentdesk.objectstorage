@@ -28,8 +28,14 @@ def updateProductUpdates(updateList):
     updateProductHistory(updateList)
 
 def getProductUpdateHistory():
+
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
-    return getObject('export/contentdesk/job/index/updates/history/'+dateToday+'/index.json')
+    # check if file exists
+    try:
+        productHistory = getObject('export/contentdesk/job/index/updates/history/'+dateToday+'/index.json')
+    except:
+        productHistory = {}
+    return productHistory
 
 def updateProductHistory(updateList):
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
