@@ -96,3 +96,12 @@ def countFilesInFolder(folder):
         return len(response['Contents'])
     else:
         return 0
+
+# check if folder exist in Object Storage
+def folderExist(folder):
+    s3 = s3client()
+    response = s3.list_objects_v2(Bucket=OBJECTSTORAGE_BUCKET, Prefix=folder)
+    if 'Contents' in response:
+        return True
+    else:
+        return False
