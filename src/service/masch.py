@@ -16,11 +16,13 @@ def checkProductsMasch(updateList):
         print(checkProduct)
         print("Action:")
         print(updateList[checkProduct]["action"])
-        
+        # Get Product from Object Storage
         product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
         print(product)
+        # Check if MaschId exists
         if "maschId" in product["values"]:
-            print("Product "+checkProduct+" --> MaschId: "+product["values"]["maschId"])
+            print("Product "+product["identifier"])
+            print("MaschId: "+product["values"]["maschId"])
             maschId = product["values"]["maschId"]
             if maschId != "":
                 try:
