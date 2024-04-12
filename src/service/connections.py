@@ -18,28 +18,29 @@ CONNECTION_TEXTBLAZE = getenv('CONNECTION_TEXTBLAZE')
 def checkConnections(updateList):
     print("Checking Connections")
     # Check Outdooractive
+    print("Checking Outdooractive")
     if CONNECTION_OUTDOORACTIVE == True:
-        print("Checking Outdooractive")
+        print("Checking Outdooractive = TRUE")
         # checkProductConnections(identifier)
     # Check OpenData
+    print("Checking OpenData")
     if CONNECTION_OPENDATA == True:
-        print("Checking OpenData")
+        print("Checking OpenData = TRUE")
         # checkProductConnections(identifier)
     # Check Akeneo OST
+    print("Checking Akeneo OST")
     if CONNECTION_OST == True:
-        print("Checking Akeneo OST")
-        # checkProductConnections(identifier)
-    # Check Akeneo DEMO
-    if CONNECTION_DEMO == True:
-        print("Checking Akeneo DEMO")
+        print("Checking Akeneo OST = TRUE")
         # checkProductConnections(identifier)
     # Check Masch
+    print("Checking Masch")
     if CONNECTION_MASCH == True:
-        print("Checking Masch")
+        print("Checking Masch = TRUE")
         checkProductsMasch(updateList)
     # Check Text Blaze
+    print("Checking Text Blaze")
     if CONNECTION_TEXTBLAZE == True:
-        print("Checking Text Blaze")
+        print("Checking Text Blaze = TRUE")
         # checkProductConnections(identifier)
-    print("DONE")
+    print("DONE - Checking Connections")
     return "Done"
