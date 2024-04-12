@@ -28,6 +28,8 @@ def updateProductUpdates(updateList):
     putObject(updateList, 'export/contentdesk/job/products/updates/index.json')
     # Add to index updates
     putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
+    # Add to Connections Worker
+    putObject(updateList, 'export/contentdesk/job/connections/updates/index.json')
 
 def getProductUpdateHistory():
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
