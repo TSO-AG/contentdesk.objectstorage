@@ -4,6 +4,7 @@ sys.path.append("..")
 
 from service.objectStorage import getObject, putObject, countFilesInFolder, folderExist
 from service.akeneo import getAkeneoProduct
+from service.connections import checkConnections
 
 # Load product update list from object storage /export/contentdesk/job/products/updates/index.json
 def loadProductUpdates():
@@ -86,6 +87,8 @@ def __main__():
    updateList = loadProductUpdates()   
    print("UPDATE PRODUCT")
    updateProducts(updateList)
+   print("CHECK CONNECTIONS")
+   checkConnections(updateList)
    print("REMOVING PRODUCT UPDATES")
    updateProductUpdates({})
    print("DONE")
