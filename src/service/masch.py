@@ -15,9 +15,7 @@ def checkProductsMasch(updateList):
         print("Check product:")
         print(checkProduct)
         print("Action:")
-        for key,value in checkProduct:
-            print(key)
-            print(value)
+        print(updateList[checkProduct]["action"])
         try:
             product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
             if "maschId" in product["values"]:
