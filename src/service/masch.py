@@ -4,13 +4,13 @@ sys.path.append("..")
 
 from service.objectStorage import getObject, putObject, countFilesInFolder, folderExist
 
-def updateProductUpdates(updateList):
-    # Add to product updates
-    putObject(updateList, 'export/contentdesk/job/products/updates/index.json')
+def getMaschUpdateJobs():
+    updateList = getObject('export/contentdesk/job/masch/updates/index.json')
+    return updateList
 
 def checkProductsMasch(updateList):
     print("Checking Masch UpdateList")
-    updateListMasch = {}
+    updateListMasch = getMaschUpdateJobs()
     for checkProduct in updateList:
         print("Check product:")
         print(checkProduct)
