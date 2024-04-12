@@ -1,6 +1,5 @@
 from os import getenv
 from dotenv import find_dotenv, load_dotenv
-from akeneo.akeneo import Akeneo
 from service.masch import checkProductsMasch
 load_dotenv(find_dotenv())
 

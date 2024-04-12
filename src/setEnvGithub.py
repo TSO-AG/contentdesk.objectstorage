@@ -84,6 +84,11 @@ def getSecrets(environment):
     env_vars['OBJECTSTORAGE_SECRET_ACCESS_KEY'] = getenv('OBJECTSTORAGE_SECRET_ACCESS_KEY')
     env_vars['OBJECTSTORAGE_EXPORT_PATH'] = getenv('OBJECTSTORAGE_EXPORT_PATH')
     env_vars['OBJECTSTORAGE_CDN'] = getenv('CDN_ENDPOINT')
+    env_vars['CONNECTION_OUTDOORACTIVE'] = getenv('CONNECTION_OUTDOORACTIVE')
+    env_vars['CONNECTION_OPENDATA'] = getenv('CONNECTION_OPENDATA')
+    env_vars['CONNECTION_OST'] = getenv('CONNECTION_OST')
+    env_vars['CONNECTION_MASCH'] = getenv('CONNECTION_MASCH')
+    env_vars['CONNECTION_TEXTBLAZE'] = getenv('CONNECTION_TEXTBLAZE')
     return env_vars
 
 def main():
