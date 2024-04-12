@@ -22,7 +22,7 @@ def checkProductsMasch(updateList):
             if "maschId" in product["values"]:
                 maschId = product["values"]["maschId"]
                 if maschId != "":
-                    updateListMasch[maschId] = {"identifier": product["identifier"], "action": "update"}
+                    updateListMasch[checkProduct] = {"identifier": product["identifier"], "action": "update"}
         except:
             print("Product "+checkProduct+" --> Error")
             # print exception
