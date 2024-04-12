@@ -22,8 +22,9 @@ def checkProductsMasch(updateList):
         # Check if MaschId exists
         if "maschId" in product["values"]:
             print("Product "+product["identifier"])
-            print("MaschId: "+product["values"]["maschId"])
-            maschId = product["values"]["maschId"]
+            print("MaschId: ")
+            print(product["values"]["maschId"][0]["data"])
+            maschId = product["values"]["maschId"][0]["data"]
             if maschId != "":
                 try:
                      updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
