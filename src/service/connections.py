@@ -1,7 +1,10 @@
 from os import getenv
 from dotenv import find_dotenv, load_dotenv
-from service.masch import checkProductsMasch
 load_dotenv(find_dotenv())
+
+import sys
+sys.path.append("..")
+from service.masch import checkProductsMasch
 
 # OUTDOORACTIVE
 CONNECTION_OUTDOORACTIVE = getenv('CONNECTION_OUTDOORACTIVE')
