@@ -16,13 +16,15 @@ def checkProductsMasch(updateList):
         print(checkProduct)
         print("Action:")
         print(updateList[checkProduct]["action"])
+        
+        product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
+        print(product)
         try:
-            product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
             if "maschId" in product["values"]:
                 print("Product "+checkProduct+" --> MaschId: "+product["values"]["maschId"])
                 maschId = product["values"]["maschId"]
                 if maschId != "":
-                    updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": "update"}
+                    updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
         except:
             print("Product "+checkProduct+" --> Error")
             # print exception
