@@ -9,6 +9,7 @@ def updateProductUpdates(updateList):
     putObject(updateList, 'export/contentdesk/job/products/updates/index.json')
 
 def checkProductsMasch(updateList):
+    print("Checking Masch UpdateList")
     updateListMasch = {}
     for checkProduct in updateList:
         print("Check product "+checkProduct["identifier"])
