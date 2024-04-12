@@ -13,7 +13,7 @@ def checkProductsMasch(updateList):
     updateListMasch = {}
     for checkProduct in updateList:
         print("Check product:")
-        print(checkProduct["identifier"])
+        print(checkProduct)
         try:
             product = getObject('export/contentdesk/products/'+checkProduct["identifier"]+'/index.json')
             if "maschId" in product["values"]:
