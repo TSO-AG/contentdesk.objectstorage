@@ -23,7 +23,6 @@ env:
   CONNECTION_TEXTBLAZE: ${{ secrets.CONNECTION_TEXTBLAZE }}
   CONNECTION_MASCH: ${{ secrets.CONNECTION_MASCH }}
 
-
 jobs:
   deploy:
     environment: ziggy
