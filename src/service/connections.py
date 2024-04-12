@@ -19,6 +19,7 @@ CONNECTION_TEXTBLAZE = getenv('CONNECTION_TEXTBLAZE')
 
 def checkConnections(updateList):
     print("Checking Connections")
+    print(updateList)
     # Check Outdooractive
     print("Checking Outdooractive")
     if CONNECTION_OUTDOORACTIVE == True:
