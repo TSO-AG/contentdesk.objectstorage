@@ -12,7 +12,6 @@ CONNECTION_OUTDOORACTIVE = getenv('CONNECTION_OUTDOORACTIVE')
 CONNECTION_OPENDATA = getenv('CONNECTION_OPENDATA')
 # AKENEOs
 CONNECTION_OST = getenv('CONNECTION_OST')
-CONNECTION_DEMO = getenv('CONNECTION_DEMO')
 # MASCH
 CONNECTION_MASCH = getenv('CONNECTION_MASCH')
 # Text Blaze
@@ -37,6 +36,7 @@ def checkConnections(updateList):
         # checkProductConnections(identifier)
     # Check Masch
     print("Checking Masch")
+    print(CONNECTION_MASCH)
     if CONNECTION_MASCH == True:
         print("Checking Masch = TRUE")
         checkProductsMasch(updateList)
