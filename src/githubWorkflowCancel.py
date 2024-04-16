@@ -30,13 +30,13 @@ def main():
 
     # Get all running workflows in the queue
     print(f'Getting all running workflows in the queue for {owner}/{repo}')
-    response = requests.get(f'https://api.github.com/repos/{owner}/{repo}/actions/runs?status=queued&per_page=100', headers=headers)
+    response = requests.get(f'https://api.github.com/repos/{owner}/{repo}/actions/runs?status=in_progress&per_page=100', headers=headers)
 
     print(f'Found {len(response.json()["workflow_runs"])} running workflows')
 
     # Cancel all running workflows
     for run in response.json()['workflow_runs']:
-        if run['status'] == 'queued':
+        if run['status'] == 'queued' or run['status'] == 'in_progress':
             run_id = run['id']
             response = requests.post(f'https://api.github.com/repos/{owner}/{repo}/actions/runs/{run_id}/cancel', headers=headers)
             print(f'Cancelled workflow {run_id}: {response.status_code}')
