@@ -17,7 +17,13 @@ def checkProductsMasch(updateList):
         print("Action:")
         print(updateList[checkProduct]["action"])
         # Get Product from Object Storage
-        product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
+        #product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
+        # check if file exists
+        try:
+            product = getObject('/api/rest/v1/products/'+checkProduct+'.json')
+        except:
+            product = {}
+
         print(product)
         # Check if MaschId exists
         if "maschId" in product["values"]:

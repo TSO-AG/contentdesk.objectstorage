@@ -38,7 +38,7 @@ def checkConnections(updateList):
     # Check Masch
     print("Checking Masch")
     print(CONNECTION_MASCH)
-    if CONNECTION_MASCH:
+    if CONNECTION_MASCH == True:
         print("Checking Masch = TRUE")
         checkProductsMasch(updateList)
     # Check Text Blaze

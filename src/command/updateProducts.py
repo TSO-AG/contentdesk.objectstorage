@@ -39,7 +39,7 @@ def getProductUpdateHistory():
         productHistory = {}
     return productHistory
 
-def updateProductHistory(updateList):
+def updateProductsHistory(updateList):
     print("Updating product day history")
     print(updateList)
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -50,16 +50,25 @@ def updateProductHistory(updateList):
         print(update)
         todayHistory[identifier] = {"identifier": identifier, "action": update['action']}
         putObject(todayHistory, 'export/contentdesk/job/index/updates/history/' + dateToday + '/index.json')
-    
+
+def updateProductHistory(identifier, action):
+    dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
+    todayHistory = getProductUpdateHistory()
+    print("Updating product " + identifier)
+    print(action)
+    todayHistory[identifier] = {"identifier": identifier, "action": action}
+    putObject(todayHistory, 'export/contentdesk/job/index/updates/history/' + dateToday + '/index.json')
+
 def updateProducts(updateList):
     for identifier in updateList:
         if updateList[identifier]["action"] == "product.update" or updateList[identifier]["action"] == "product.create":
             print("Updating product "+identifier)
             try:
                 #product = getAkeneoProduct(identifier)
-                product = getObject('/api/rest/v1/products/'+identifier+'.json')
+                if folderExist("/api/rest/v1/products/'+identifier+'.json"):
+                    product = getObject('/api/rest/v1/products/'+identifier+'.json')
                 # Check if Folder exist
-                if not folderExist('export/contentdesk/products/'+identifier):
+                elif not folderExist('/api/rest/v1/products/'+identifier+'.json'):
                     print("Creating folder export/contentdesk/products/"+identifier)
                     putObject({}, 'export/contentdesk/products/'+identifier+'/index.json')
                     putObject({}, 'export/contentdesk/products/'+identifier+'/history/')
@@ -71,6 +80,9 @@ def updateProducts(updateList):
                 # Add/Update Files in Object Storage
                 putObject(product, 'export/contentdesk/products/'+identifier+'/index.json')
                 putObject(productHistory, 'export/contentdesk/products/'+identifier+'/history/'+str(i)+'.json')
+                # Add to Day History
+                print("Updating product day history")
+                updateProductHistory(identifier, updateList[identifier]["action"])
             except:
                 print("Product "+identifier+" --> Error")
                 # print exception
@@ -78,9 +90,10 @@ def updateProducts(updateList):
         elif updateList[identifier]["action"] == "product.removed":
             print("Removing product "+identifier)
             print("Noting to do")
+    
     # Add to Day History
-    print("Updating product day history")
-    updateProductHistory(updateList)
+    #print("Updating products day history")
+    #updateProductsHistory(updateList)
 
 def __main__():
    # Test
