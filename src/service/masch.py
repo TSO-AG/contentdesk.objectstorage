@@ -21,7 +21,7 @@ def checkProductsMasch(updateList):
         # check if file exists
         try:
             print("Product "+checkProduct+" File exists")
-            product = getObject('/api/rest/v1/products/'+checkProduct+'.json')
+            product = getObject('api/rest/v1/products/'+checkProduct+'.json')
             print(product)
         except:
             # print exception

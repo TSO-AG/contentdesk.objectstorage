@@ -65,10 +65,10 @@ def updateProducts(updateList):
             print("Updating product "+identifier)
             try:
                 #product = getAkeneoProduct(identifier)
-                if folderExist("/api/rest/v1/products/"+identifier+".json"):
-                    product = getObject('/api/rest/v1/products/'+identifier+'.json')
+                if folderExist("api/rest/v1/products/"+identifier+".json"):
+                    product = getObject('api/rest/v1/products/'+identifier+'.json')
                 # Check if Folder exist
-                elif not folderExist('/api/rest/v1/products/'+identifier+'.json'):
+                elif not folderExist('api/rest/v1/products/'+identifier+'.json'):
                     print("Creating folder export/contentdesk/products/"+identifier)
                     putObject({}, 'export/contentdesk/products/'+identifier+'/index.json')
                     putObject({}, 'export/contentdesk/products/'+identifier+'/history/')
