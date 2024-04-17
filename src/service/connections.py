@@ -22,29 +22,38 @@ def checkConnections(updateList):
     print(updateList)
     # Check Outdooractive
     print("Checking Outdooractive")
-    if CONNECTION_OUTDOORACTIVE == True:
+    if CONNECTION_OUTDOORACTIVE:
         print("Checking Outdooractive = TRUE")
         # checkProductConnections(identifier)
+    else:
+        print("Checking Outdooractive = FALSE")
     # Check OpenData
     print("Checking OpenData")
-    if CONNECTION_OPENDATA == True:
+    if CONNECTION_OPENDATA:
         print("Checking OpenData = TRUE")
         # checkProductConnections(identifier)
+    else:
+        print("Checking OpenData = FALSE")
     # Check Akeneo OST
     print("Checking Akeneo OST")
-    if CONNECTION_OST == True:
+    if CONNECTION_OST:
         print("Checking Akeneo OST = TRUE")
         # checkProductConnections(identifier)
+    else:
+        print("Checking Akeneo OST = FALSE")
     # Check Masch
     print("Checking Masch")
-    print(CONNECTION_MASCH)
-    if CONNECTION_MASCH == True:
+    if CONNECTION_MASCH:
         print("Checking Masch = TRUE")
         checkProductsMasch(updateList)
+    else:
+        print("Checking Masch = FALSE")
     # Check Text Blaze
     print("Checking Text Blaze")
-    if CONNECTION_TEXTBLAZE == True:
+    if CONNECTION_TEXTBLAZE:
         print("Checking Text Blaze = TRUE")
         # checkProductConnections(identifier)
+    else:
+        print("Checking Text Blaze = FALSE")
     print("DONE - Checking Connections")
     return "Done"
