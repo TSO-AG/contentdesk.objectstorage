@@ -53,26 +53,31 @@ def updateProductHistory(updateList):
     
 def updateProducts(updateList):
     for identifier in updateList:
-        print("Updating product "+identifier)
-        try:
-            product = getAkeneoProduct(identifier)
-            # Check if Folder exist
-            if not folderExist('export/contentdesk/products/'+identifier):
-                print("Creating folder export/contentdesk/products/"+identifier)
-                putObject({}, 'export/contentdesk/products/'+identifier+'/index.json')
-                putObject({}, 'export/contentdesk/products/'+identifier+'/history/')
-            # make Version
-            productHistory = getObject('export/contentdesk/products/'+identifier+'/index.json')
-            # how many files in history folder in Object Storage
-            # count files in export/contentdesk/products/identifier/history
-            i = countFilesInFolder('export/contentdesk/products/'+identifier+'/history')
-            # Add/Update Files in Object Storage
-            putObject(product, 'export/contentdesk/products/'+identifier+'/index.json')
-            putObject(productHistory, 'export/contentdesk/products/'+identifier+'/history/'+str(i)+'.json')
-        except:
-            print("Product "+identifier+" --> Error")
-            # print exception
-            print(sys.exc_info()[0])
+        if updateList[identifier]["action"] == "product.update" or updateList[identifier]["action"] == "product.create":
+            print("Updating product "+identifier)
+            try:
+                #product = getAkeneoProduct(identifier)
+                product = getObject('/api/rest/v1/products/'+identifier+'.json')
+                # Check if Folder exist
+                if not folderExist('export/contentdesk/products/'+identifier):
+                    print("Creating folder export/contentdesk/products/"+identifier)
+                    putObject({}, 'export/contentdesk/products/'+identifier+'/index.json')
+                    putObject({}, 'export/contentdesk/products/'+identifier+'/history/')
+                # make Version
+                productHistory = getObject('export/contentdesk/products/'+identifier+'/index.json')
+                # how many files in history folder in Object Storage
+                # count files in export/contentdesk/products/identifier/history
+                i = countFilesInFolder('export/contentdesk/products/'+identifier+'/history')
+                # Add/Update Files in Object Storage
+                putObject(product, 'export/contentdesk/products/'+identifier+'/index.json')
+                putObject(productHistory, 'export/contentdesk/products/'+identifier+'/history/'+str(i)+'.json')
+            except:
+                print("Product "+identifier+" --> Error")
+                # print exception
+                print(sys.exc_info()[0])
+        elif updateList[identifier]["action"] == "product.removed":
+            print("Removing product "+identifier)
+            print("Noting to do")
     # Add to Day History
     print("Updating product day history")
     updateProductHistory(updateList)
