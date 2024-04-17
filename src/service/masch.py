@@ -22,25 +22,36 @@ def checkProductsMasch(updateList):
         try:
             print("Product "+checkProduct+" File exists")
             product = getObject('/api/rest/v1/products/'+checkProduct+'.json')
+            print(product)
         except:
-            print("Product "+checkProduct+" File does not exist")
-            product = {}
+            # print exception
+            print(sys.exc_info()[0])
 
         print(product)
-        # Check if MaschId exists
-        if "maschId" in product["values"]:
-            print("Product "+product["identifier"])
-            print("MaschId: ")
-            print(product["values"]["maschId"][0]["data"])
-            maschId = product["values"]["maschId"][0]["data"]
-            if maschId != "":
-                try:
-                     updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
-                except:
-                    print("Product "+checkProduct+" --> Error")
-                    # print exception
-                    print(sys.exc_info()[0])
+        # check if product has values
+        if "values" in product:
+            print("Product "+checkProduct+" has values")
 
-    print ("UpdateListMasch")
-    print(updateListMasch)
-    putObject(updateListMasch, 'export/contentdesk/job/masch/updates/index.json')
+            # Check if MaschId exists
+            if "maschId" in product["values"]:
+                print("Product "+product["identifier"])
+                print("MaschId: ")
+                print(product["values"]["maschId"][0]["data"])
+                maschId = product["values"]["maschId"][0]["data"]
+                if maschId != "":
+                    try:
+                        updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
+                    except:
+                        print("Product "+checkProduct+" --> Error")
+                        # print exception
+                        print(sys.exc_info()[0])
+        else:
+            print("Product "+checkProduct+" has no values")
+    
+    # Check updateListMasch is not empty
+    if updateListMasch:
+        print("UpdateListMasch")
+        print(updateListMasch)
+        putObject(updateListMasch, 'export/contentdesk/job/masch/updates/index.json')
+    else:
+        print("UpdateListMasch is empty - No Updates")
