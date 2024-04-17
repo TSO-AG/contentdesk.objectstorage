@@ -19,10 +19,10 @@ def checkProductsMasch(updateList):
         # Get Product from Object Storage
         #product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
         # check if file exists
-        if folderExist("/api/rest/v1/products/"+checkProduct+".json"):
+        try:
             print("Product "+checkProduct+" File exists")
             product = getObject('/api/rest/v1/products/'+checkProduct+'.json')
-        else:
+        except:
             print("Product "+checkProduct+" File does not exist")
             product = {}
 
