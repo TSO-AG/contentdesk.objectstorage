@@ -20,7 +20,11 @@ def checkProductsMasch(updateList):
         #product = getObject('export/contentdesk/products/'+checkProduct+'/index.json')
         # check if file exists
         if folderExist("/api/rest/v1/products/"+checkProduct+".json"):
+            print("Product "+checkProduct+" File exists")
             product = getObject('/api/rest/v1/products/'+checkProduct+'.json')
+        else:
+            print("Product "+checkProduct+" File does not exist")
+            product = {}
 
         print(product)
         # Check if MaschId exists
