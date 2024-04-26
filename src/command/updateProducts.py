@@ -35,11 +35,11 @@ def getProductUpdateHistory():
     # check if file exists
     try:
         # ckeck if folder exist
-        if not folderExist('export/contentdesk/job/index/updates/history/'+dateToday+'/index.json'):
-            putObject({}, 'export/contentdesk/job/index/updates/history/'+dateToday+'/index.json')
+        if not folderExist('export/contentdesk/job/products/updates/history/'+dateToday+'/index.json'):
+            putObject({}, 'export/contentdesk/job/products/updates/history/'+dateToday+'/index.json')
         else:
             print("Folder exist")
-        productHistory = getObject('export/contentdesk/job/index/updates/history/'+dateToday+'/index.json')
+        productHistory = getObject('export/contentdesk/job/products/updates/history/'+dateToday+'/index.json')
     except:
         productHistory = {}
     return productHistory
@@ -54,7 +54,7 @@ def updateProductsHistory(updateList):
         print("Updating product " + identifier)
         print(update)
         todayHistory[identifier] = {"identifier": identifier, "action": update['action']}
-        putObject(todayHistory, 'export/contentdesk/job/index/updates/history/' + dateToday + '/index.json')
+        putObject(todayHistory, 'export/contentdesk/job/products/updates/history/' + dateToday + '/index.json')
 
 def updateProductHistory(identifier, action):
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -62,7 +62,7 @@ def updateProductHistory(identifier, action):
     print("Updating product " + identifier)
     print(action)
     todayHistory[identifier] = {"identifier": identifier, "action": action}
-    putObject(todayHistory, 'export/contentdesk/job/index/updates/history/' + dateToday + '/index.json')
+    putObject(todayHistory, 'export/contentdesk/job/products/updates/history/' + dateToday + '/index.json')
 
 def updateProducts(updateList):
     for identifier in updateList:
