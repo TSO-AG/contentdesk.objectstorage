@@ -34,6 +34,11 @@ def getProductUpdateHistory():
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
     # check if file exists
     try:
+        # ckeck if folder exist
+        if not folderExist('export/contentdesk/job/index/updates/history/'+dateToday+'/index.json'):
+            putObject({}, 'export/contentdesk/job/index/updates/history/'+dateToday+'/index.json')
+        else:
+            print("Folder exist")
         productHistory = getObject('export/contentdesk/job/index/updates/history/'+dateToday+'/index.json')
     except:
         productHistory = {}
