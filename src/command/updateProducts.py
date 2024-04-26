@@ -70,30 +70,25 @@ def updateProducts(updateList):
         print(updateList[identifier]["action"])
         if updateList[identifier]["action"] == "product.updated" or updateList[identifier]["action"] == "product.created":
             print("Updating product "+identifier)
-            try:
-                #product = getAkeneoProduct(identifier)
-                if folderExist("api/rest/v1/products/"+identifier+".json"):
-                    product = getObject('api/rest/v1/products/'+identifier+'.json')
-                # Check if Folder exist
-                elif not folderExist('api/rest/v1/products/'+identifier+'.json'):
-                    print("Creating folder export/contentdesk/products/"+identifier)
-                    putObject({}, 'export/contentdesk/products/'+identifier+'/index.json')
-                    putObject({}, 'export/contentdesk/products/'+identifier+'/history/')
-                # make Version
-                productHistory = getObject('export/contentdesk/products/'+identifier+'/index.json')
-                # how many files in history folder in Object Storage
-                # count files in export/contentdesk/products/identifier/history
-                i = countFilesInFolder('export/contentdesk/products/'+identifier+'/history')
-                # Add/Update Files in Object Storage
-                putObject(product, 'export/contentdesk/products/'+identifier+'/index.json')
-                putObject(productHistory, 'export/contentdesk/products/'+identifier+'/history/'+str(i)+'.json')
-                # Add to Day History
-                print("Updating product day history")
-                updateProductHistory(identifier, updateList[identifier]["action"])
-            except:
-                print("Product "+identifier+" --> Error")
-                # print exception
-                print(sys.exc_info()[0])
+            if folderExist("api/rest/v1/products/"+identifier+".json"):
+                product = getObject('api/rest/v1/products/'+identifier+'.json')
+            # Check if Folder exist
+            elif not folderExist('api/rest/v1/products/'+identifier+'.json'):
+                print("Creating folder export/contentdesk/products/"+identifier)
+                putObject({}, 'export/contentdesk/products/'+identifier+'/index.json')
+                putObject({}, 'export/contentdesk/products/'+identifier+'/history/')
+            # make Version
+            productHistory = getObject('export/contentdesk/products/'+identifier+'/index.json')
+            # how many files in history folder in Object Storage
+            # count files in export/contentdesk/products/identifier/history
+            i = countFilesInFolder('export/contentdesk/products/'+identifier+'/history')
+            # Add/Update Files in Object Storage
+            putObject(product, 'export/contentdesk/products/'+identifier+'/index.json')
+            putObject(productHistory, 'export/contentdesk/products/'+identifier+'/history/'+str(i)+'.json')
+            # Add to Day History
+            print("Updating product day history")
+            updateProductHistory(identifier, updateList[identifier]["action"])
+
         elif updateList[identifier]["action"] == "product.removed":
             print("Removing product "+identifier)
             print("Noting to do")
