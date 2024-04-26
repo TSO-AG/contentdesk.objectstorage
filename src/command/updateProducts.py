@@ -68,7 +68,7 @@ def updateProducts(updateList):
     for identifier in updateList:
         print("Check Product "+identifier)
         print(updateList[identifier]["action"])
-        if updateList[identifier]["action"] == "product.update" or updateList[identifier]["action"] == "product.create":
+        if updateList[identifier]["action"] == "product.updated" or updateList[identifier]["action"] == "product.created":
             print("Updating product "+identifier)
             try:
                 #product = getAkeneoProduct(identifier)
