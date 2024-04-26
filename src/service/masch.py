@@ -50,6 +50,14 @@ def checkProductsMasch(updateList):
     if updateListMasch:
         print("UpdateListMasch")
         print(updateListMasch)
+        # check if folder exist
+        if folderExist('export/contentdesk/job/masch/updates'):
+            print("Folder exist")
+        else:
+            print("Folder does not exist")
+            # create folder
+            print("Create Folder")
+            putObject({}, 'export/contentdesk/job/masch/updates/index.json')
         putObject(updateListMasch, 'export/contentdesk/job/masch/updates/index.json')
     else:
         print("UpdateListMasch is empty - No Updates")
