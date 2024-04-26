@@ -34,25 +34,28 @@ def checkProductsMasch(updateList):
             # print exception
             print(sys.exc_info()[0])
 
-        # check if product has values
-        if "values" in product:
-            print("Product "+checkProduct+" has values")
+        if updateList[checkProduct]["action"] == "product.updated" or updateList[checkProduct]["action"] == "product.created":
+            # check if product has values
+            if "values" in product:
+                print("Product "+checkProduct+" has values")
 
-            # Check if MaschId exists
-            if "maschId" in product["values"]:
-                print("Product "+product["identifier"])
-                print("MaschId: ")
-                print(product["values"]["maschId"][0]["data"])
-                maschId = product["values"]["maschId"][0]["data"]
-                if maschId != "":
-                    try:
-                        updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
-                    except:
-                        print("Product "+checkProduct+" --> Error")
-                        # print exception
-                        print(sys.exc_info()[0])
+                # Check if MaschId exists
+                if "maschId" in product["values"]:
+                    print("Product "+product["identifier"])
+                    print("MaschId: ")
+                    print(product["values"]["maschId"][0]["data"])
+                    maschId = product["values"]["maschId"][0]["data"]
+                    if maschId != "":
+                        try:
+                            updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
+                        except:
+                            print("Product "+checkProduct+" --> Error")
+                            # print exception
+                            print(sys.exc_info()[0])
+            else:
+                print("Product "+checkProduct+" has no values")
         else:
-            print("Product "+checkProduct+" has no values")
+            print("Product "+checkProduct+" removed")
     
     # Check updateListMasch is not empty
     if updateListMasch:
