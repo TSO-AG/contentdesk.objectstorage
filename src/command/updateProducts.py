@@ -97,6 +97,7 @@ def updateProducts(updateList):
         elif updateList[identifier]["action"] == "product.removed":
             print("Removing product "+identifier)
             print("Noting to do")
+            updateProductHistory(identifier, updateList[identifier]["action"])
     
     # Add to Day History
     #print("Updating products day history")
