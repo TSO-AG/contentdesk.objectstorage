@@ -66,7 +66,8 @@ def updateProductHistory(identifier, action):
 
 def updateProducts(updateList):
     for identifier in updateList:
-        print("Update Product "+identifier)
+        print("Check Product "+identifier)
+        print(updateList[identifier]["action"])
         if updateList[identifier]["action"] == "product.update" or updateList[identifier]["action"] == "product.create":
             print("Updating product "+identifier)
             try:
