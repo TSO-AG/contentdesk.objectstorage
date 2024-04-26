@@ -5,6 +5,14 @@ sys.path.append("..")
 from service.objectStorage import getObject, putObject, countFilesInFolder, folderExist
 
 def getMaschUpdateJobs():
+    # Check if folder exist
+    if folderExist('export/contentdesk/job/masch/updates'):
+        print("Folder exist")
+    else:
+        print("Folder does not exist")
+        # create folder
+        print("Create Folder")
+        putObject({}, 'export/contentdesk/job/masch/updates/index.json')
     updateList = getObject('export/contentdesk/job/masch/updates/index.json')
     return updateList
 
