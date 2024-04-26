@@ -51,7 +51,7 @@ def updateProductsHistory(updateList):
     todayHistory = getProductUpdateHistory()
     # dict for each with identifier and action
     for identifier, update in updateList.items():
-        print("Updating product " + identifier)
+        print("Updating Job History" + identifier)
         print(update)
         todayHistory[identifier] = {"identifier": identifier, "action": update['action']}
         putObject(todayHistory, 'export/contentdesk/job/products/updates/history/' + dateToday + '/index.json')
@@ -66,6 +66,7 @@ def updateProductHistory(identifier, action):
 
 def updateProducts(updateList):
     for identifier in updateList:
+        print("Update Product "+identifier)
         if updateList[identifier]["action"] == "product.update" or updateList[identifier]["action"] == "product.create":
             print("Updating product "+identifier)
             try:
