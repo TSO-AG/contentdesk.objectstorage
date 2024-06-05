@@ -4,6 +4,7 @@ sys.path.append("..")
 
 from service.objectStorage import getObject, putObject, countFilesInFolder, folderExist
 
+
 def getMaschUpdateJobs():
     # Check if folder exist
     if folderExist('export/contentdesk/job/masch/updates'):
@@ -52,6 +53,17 @@ def checkProductsMasch(updateList):
                             print("Product "+checkProduct+" --> Error")
                             # print exception
                             print(sys.exc_info()[0])
+                
+                # OR Check if Object new in Category masch
+                if "masch_accommodation" in product["categories"]:
+                    print("Product "+product["identifier"])
+                    print("Category: masch_accommodation")
+                    try:
+                        updateListMasch[product["identifier"]] = {"identifier": product["identifier"], "action": updateList[checkProduct]["action"]}
+                    except:
+                        print("Product "+checkProduct+" --> Error")
+                        # print exception
+                        print(sys.exc_info()[0])
             else:
                 print("Product "+checkProduct+" has no values")
         else:
