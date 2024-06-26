@@ -24,11 +24,12 @@ def testUpdateProductUpdates():
     # 31acbe46-aeb5-4f06-a7c5-a6917f2326e0
     updateProductUpdates(updateList)
 
+# Clear Update Lists
 def updateProductUpdates(updateList):
     # Add to product updates
     putObject(updateList, 'export/contentdesk/job/products/updates/index.json')
     # Add to index updates
-    putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
+    #putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
 
 def getProductUpdateHistory():
     dateToday = datetime.datetime.now().strftime('%Y-%m-%d')
@@ -65,6 +66,8 @@ def updateProductHistory(identifier, action):
     putObject(todayHistory, 'export/contentdesk/job/products/updates/history/' + dateToday + '/index.json')
 
 def updateProducts(updateList):
+    # Add to INDEX updates list
+    putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
     for identifier in updateList:
         print("Check Product "+identifier)
         print(updateList[identifier]["action"])
