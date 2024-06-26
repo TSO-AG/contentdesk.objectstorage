@@ -6,6 +6,7 @@ from service.akeneo import getAkeneoProduct
 
 def loadIndexUpdates():
     update_list = getObject('export/contentdesk/job/index/updates/index.json')
+    print(update_list)
     return update_list
 
 def setProductIndexSchema(product):
@@ -23,6 +24,7 @@ def setProductIndexSchema(product):
     #    index["values"][attribute] = product["values"][attribute]
     return index
 
+# DEBUG
 def testIndexUpdates():
     updateList={}
     updateList["c0d07da1-7875-4053-b129-2820385dade7"] = "c0d07da1-7875-4053-b129-2820385dade7"
