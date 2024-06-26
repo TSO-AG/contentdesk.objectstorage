@@ -67,7 +67,9 @@ def updateProductHistory(identifier, action):
 
 def updateProducts(updateList):
     # Add to INDEX updates list
+    print("Updating INDEX update Lists")
     putObject(updateList, 'export/contentdesk/job/index/updates/index.json')
+    print("Updating Products")
     for identifier in updateList:
         print("Check Product "+identifier)
         print(updateList[identifier]["action"])
