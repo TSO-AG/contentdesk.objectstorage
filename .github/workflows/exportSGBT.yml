@@ -2,8 +2,8 @@ name: Export sgbt
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "30 19 * * *"
+  #schedule:
+  #  - cron: "30 19 * * *"
 
 env:
   AKENEO_HOST: ${{ secrets.AKENEO_HOST }}
